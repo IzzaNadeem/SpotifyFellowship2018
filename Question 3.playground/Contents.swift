@@ -13,6 +13,21 @@ import UIKit
 //    1¢, 3¢
 //    2¢, 2¢
 
+func NumberOfWays(amount: Int, denominations: [Int], index:Int) -> Int {
 
+    if amount == 0 {
+        return 1
+    }
+    if amount < 0 {
+        return 0
+    }
+    if  index == denominations.count && amount > 0 {
+        return 0
+    }
+
+     return NumberOfWays(amount: amount - denominations[index], denominations: denominations, index: index) + NumberOfWays(amount: amount, denominations: denominations, index: index + 1)
+}
+
+print(NumberOfWays(amount: 4, denominations: [1,2], index: 0))
 
 
